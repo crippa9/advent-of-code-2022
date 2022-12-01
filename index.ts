@@ -1,5 +1,7 @@
 import { readFileSync } from 'fs';
 
+const LineSeparator = "\r\n";
+
 const readFileAsString = (): string => {
   console.log("Parsing input from file...");
   const path = "./input.txt";
@@ -7,11 +9,12 @@ const readFileAsString = (): string => {
   return readFileSync(path, 'utf8');
 };
 const getCaloriesPerElf = (textInput: string): number[] => {
-  const stringsPerElf = textInput.split("\r\n\r\n");
+  const stringsPerElf = textInput.split(`${LineSeparator}${LineSeparator}`);
   console.log("Number of elves: ", stringsPerElf.length);
+
   const caloriesPerElf: number[][] = stringsPerElf.map(
     caloriesPerElfString => caloriesPerElfString
-      .split("\r\n")
+      .split(LineSeparator)
       .map((caloryString) => Number.parseInt(caloryString))
   );
   const totalCaloriesPerElf: number[] = caloriesPerElf.map(sumOfArray);
