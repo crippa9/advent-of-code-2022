@@ -1,5 +1,7 @@
-export const sumOfArray = (calories: number[]): number =>
-  calories.reduce((sum, current) => current + sum, 0);
+import { Elf } from "./elf";
+
+export const sumOfCalories = (elves: Elf[]): number =>
+  elves.reduce((sum, current) => current.totalCalories() + sum, 0);
 
 export const max = (input: number[]): number =>
   input.reduce(
@@ -8,5 +10,17 @@ export const max = (input: number[]): number =>
     0
   );
 
-export const orderDescending = (input: number[]): number[] =>
-  input.sort((a, b) => b - a);
+export const getElfWithMostCalories = (elves: Elf[]): Elf => {
+  const elfWithMostCalories = elves.reduce<Elf | undefined>(
+    (leader, currentElf) =>
+      leader && leader.totalCalories() > currentElf.totalCalories()
+        ? leader
+        : currentElf,
+    undefined
+  );
+  if (!elfWithMostCalories) throw new Error('Not able to get elf with most calories');
+  return elfWithMostCalories;
+}
+
+export const orderByCalories = (elves: Elf[]): Elf[] =>
+  elves.sort((a, b) => b.totalCalories() - a.totalCalories());

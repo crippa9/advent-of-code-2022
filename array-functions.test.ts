@@ -1,10 +1,14 @@
 import { test, expect, describe } from "@jest/globals";
-import { max, orderDescending, sumOfArray } from "./array-functions";
+import { max, orderByCalories, sumOfCalories } from "./array-functions";
+import { Elf } from "./elf";
 
-describe("sumOfArray", () => {
-  test("Adds array values 1,2,3 to 6", () =>
-    expect(sumOfArray([1, 2, 3])).toBe(6));
-  test("With empty array returns 0", () => expect(sumOfArray([])).toBe(0));
+describe("sumOfCalories", () => {
+  test("Adds elf calories 1,2,3 to 6", () => {
+    expect(sumOfCalories(createElvesWithTotals([1, 2, 3]))).toBe(6);
+  });
+  test("With empty array returns 0", () => {
+    expect(sumOfCalories([])).toBe(0);
+  });
 });
 
 describe("max", () => {
@@ -12,9 +16,14 @@ describe("max", () => {
   test("With empty array returns 0", () => expect(max([])).toBe(0));
 });
 
-describe("orderDescending", () => {
+describe("orderByCalories", () => {
   test("Orders [1,25,10] to [25,10,1]", () =>
-    expect(orderDescending([1, 25, 10])).toStrictEqual([25, 10, 1]));
+    expect(orderByCalories(createElvesWithTotals([1, 25, 10]))).toStrictEqual(
+      createElvesWithTotals([25, 10, 1])
+    ));
   test("With empty array to return empty array", () =>
-    expect(orderDescending([])).toStrictEqual([]));
+    expect(orderByCalories([])).toStrictEqual([]));
 });
+
+const createElvesWithTotals = (totals: number[]): Elf[] =>
+  totals.map((total) => new Elf([total]));

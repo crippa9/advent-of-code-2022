@@ -1,38 +1,39 @@
-import { max, orderDescending, sumOfArray } from "./array-functions";
+import { orderByCalories, sumOfCalories, getElfWithMostCalories } from "./array-functions";
+import { Elf } from "./elf";
 import { readFileAsString } from "./file-reader";
 
-const getCaloriesPerElf = (textInput: string): number[] => {
+const elvesFromString = (textInput: string): Elf[] => {
   const lineSeparator = "\r\n";
 
   const stringsPerElf = textInput.split(`${lineSeparator}${lineSeparator}`);
   console.log("Number of elves: ", stringsPerElf.length);
 
-  const caloriesPerElf: number[][] = stringsPerElf.map((caloriesPerElfString) =>
-    caloriesPerElfString
-      .split(lineSeparator)
-      .map((caloryString) => Number.parseInt(caloryString))
+  const elves: Elf[] = stringsPerElf.map((caloriesPerElfString) =>
+    new Elf(
+      caloriesPerElfString
+        .split(lineSeparator)
+        .map((caloryString) => Number.parseInt(caloryString))
+    )
   );
-  const totalCaloriesPerElf: number[] = caloriesPerElf.map(sumOfArray);
-
-  return totalCaloriesPerElf;
+  return elves;
 };
 
 const inputString = readFileAsString();
 
-const totalCaloriesPerElf = getCaloriesPerElf(inputString);
+const elves = elvesFromString(inputString);
 
-const caloriesOfElfWithMostCalories = max(totalCaloriesPerElf);
+const elfWithMostCalories = getElfWithMostCalories(elves);
 
-const elvesOrderedByCaloryCount = orderDescending(totalCaloriesPerElf);
+const elvesOrderedByCaloryCount = orderByCalories(elves);
 const topThree = elvesOrderedByCaloryCount.slice(0, 3);
-const topThreeTotalCalories = sumOfArray(topThree);
 
 console.log();
 console.log(
   "1 A. Total calories of elf with most calories: ",
-  caloriesOfElfWithMostCalories
+  elfWithMostCalories.totalCalories()
 );
 console.log(
   "1 B. Total calories of three elves with most calories: ",
-  topThreeTotalCalories
+  sumOfCalories(topThree)
 );
+
