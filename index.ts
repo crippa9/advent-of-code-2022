@@ -1,21 +1,15 @@
-import { readFileSync } from "fs";
 import { max, orderDescending, sumOfArray } from "./array-functions";
+import { readFileAsString } from "./file-reader";
 
-const LineSeparator = "\r\n";
-
-const readFileAsString = (): string => {
-  console.log("Parsing input from file...");
-  const path = "./input.txt";
-
-  return readFileSync(path, "utf8");
-};
 const getCaloriesPerElf = (textInput: string): number[] => {
-  const stringsPerElf = textInput.split(`${LineSeparator}${LineSeparator}`);
+  const lineSeparator = "\r\n";
+
+  const stringsPerElf = textInput.split(`${lineSeparator}${lineSeparator}`);
   console.log("Number of elves: ", stringsPerElf.length);
 
   const caloriesPerElf: number[][] = stringsPerElf.map((caloriesPerElfString) =>
     caloriesPerElfString
-      .split(LineSeparator)
+      .split(lineSeparator)
       .map((caloryString) => Number.parseInt(caloryString))
   );
   const totalCaloriesPerElf: number[] = caloriesPerElf.map(sumOfArray);
@@ -23,9 +17,9 @@ const getCaloriesPerElf = (textInput: string): number[] => {
   return totalCaloriesPerElf;
 };
 
-const parsedInput = readFileAsString();
+const inputString = readFileAsString();
 
-const totalCaloriesPerElf = getCaloriesPerElf(parsedInput);
+const totalCaloriesPerElf = getCaloriesPerElf(inputString);
 
 const caloriesOfElfWithMostCalories = max(totalCaloriesPerElf);
 
