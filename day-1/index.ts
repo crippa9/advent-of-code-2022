@@ -23,8 +23,11 @@ const elvesFromString = (textInput: string): Elf[] => {
 };
 
 export default class Day1 extends Puzzle {
+  constructor() {
+    super(1);
+  }
   solveFirstTest(): void {
-    const inputString = this.readInput("day-1/test-input.txt");
+    const inputString = this.readTestInput();
     const elves = elvesFromString(inputString);
 
     const elfWithMostCalories = getElfWithMostCalories(elves);
@@ -36,7 +39,7 @@ export default class Day1 extends Puzzle {
     );
   }
   solveFirst(): void {
-    const inputString = this.readInput("day-1/input.txt");
+    const inputString = this.readInput();
     const elves = elvesFromString(inputString);
 
     const elfWithMostCalories = getElfWithMostCalories(elves);
@@ -48,7 +51,7 @@ export default class Day1 extends Puzzle {
     );
   }
   solveSecondTest(): void {
-    const inputString = this.readInput("day-1/test-input.txt");
+    const inputString = this.readTestInput();
 
     const elves = elvesFromString(inputString);
 
@@ -62,7 +65,7 @@ export default class Day1 extends Puzzle {
     );
   }
   solveSecond(): void {
-    const inputString = this.readInput("day-1/input.txt");
+    const inputString = this.readInput();
 
     const elves = elvesFromString(inputString);
 
