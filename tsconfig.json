@@ -11,7 +11,7 @@
   },
   "include": [
     "**.ts"
-, "day-1/index.ts"   ],
+, "day-1/index.ts", "day-1/array-functions.test.ts", "day-1/array-functions.ts"   ],
   "exclude": [
     "node_modules",
     "firefunctions"

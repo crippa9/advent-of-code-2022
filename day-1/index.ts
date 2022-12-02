@@ -1,39 +1,78 @@
-import { orderByCalories, sumOfCalories, getElfWithMostCalories } from "../array-functions";
-import { Elf } from "../elf";
-import { readFileAsString } from "../file-reader";
+import {
+  orderByCalories,
+  sumOfCalories,
+  getElfWithMostCalories,
+} from "./array-functions";
+import { Elf } from "./elf";
+import Puzzle from "../puzzle";
 
 const elvesFromString = (textInput: string): Elf[] => {
   const lineSeparator = "\r\n";
 
   const stringsPerElf = textInput.split(`${lineSeparator}${lineSeparator}`);
-  console.log("Number of elves: ", stringsPerElf.length);
 
-  const elves: Elf[] = stringsPerElf.map((caloriesPerElfString) =>
-    new Elf(
-      caloriesPerElfString
-        .split(lineSeparator)
-        .map((caloryString) => Number.parseInt(caloryString))
-    )
+  const elves: Elf[] = stringsPerElf.map(
+    (caloriesPerElfString) =>
+      new Elf(
+        caloriesPerElfString
+          .split(lineSeparator)
+          .map((caloryString) => Number.parseInt(caloryString))
+      )
   );
   return elves;
 };
 
-const inputString = readFileAsString();
+export default class Day1 extends Puzzle {
+  solveFirstTest(): void {
+    const inputString = this.readInput("day-1/test-input.txt");
+    const elves = elvesFromString(inputString);
 
-const elves = elvesFromString(inputString);
+    const elfWithMostCalories = getElfWithMostCalories(elves);
 
-const elfWithMostCalories = getElfWithMostCalories(elves);
+    console.log();
+    console.log(
+      "1 A. Total calories of elf with most calories: ",
+      elfWithMostCalories.totalCalories()
+    );
+  }
+  solveFirst(): void {
+    const inputString = this.readInput("day-1/input.txt");
+    const elves = elvesFromString(inputString);
 
-const elvesOrderedByCaloryCount = orderByCalories(elves);
-const topThree = elvesOrderedByCaloryCount.slice(0, 3);
+    const elfWithMostCalories = getElfWithMostCalories(elves);
 
-console.log();
-console.log(
-  "1 A. Total calories of elf with most calories: ",
-  elfWithMostCalories.totalCalories()
-);
-console.log(
-  "1 B. Total calories of three elves with most calories: ",
-  sumOfCalories(topThree)
-);
+    console.log();
+    console.log(
+      "1 A. Total calories of elf with most calories: ",
+      elfWithMostCalories.totalCalories()
+    );
+  }
+  solveSecondTest(): void {
+    const inputString = this.readInput("day-1/test-input.txt");
 
+    const elves = elvesFromString(inputString);
+
+    const elvesOrderedByCaloryCount = orderByCalories(elves);
+    const topThree = elvesOrderedByCaloryCount.slice(0, 3);
+
+    console.log();
+    console.log(
+      "1 B. Total calories of three elves with most calories: ",
+      sumOfCalories(topThree)
+    );
+  }
+  solveSecond(): void {
+    const inputString = this.readInput("day-1/input.txt");
+
+    const elves = elvesFromString(inputString);
+
+    const elvesOrderedByCaloryCount = orderByCalories(elves);
+    const topThree = elvesOrderedByCaloryCount.slice(0, 3);
+
+    console.log();
+    console.log(
+      "1 B. Total calories of three elves with most calories: ",
+      sumOfCalories(topThree)
+    );
+  }
+}
