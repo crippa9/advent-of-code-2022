@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-   "target": "es5",
-   "lib": [
-     "es2017","es2015","dom","es6"
-    ],
-   "module": "commonjs",
-   "outDir": "./",
-   "sourceMap": false,
-   "strict": true
+    "target": "es5",
+    "lib": ["es2017", "es2015", "dom", "es6"],
+    "module": "commonjs",
+    "outDir": "./",
+    "sourceMap": false,
+    "strict": true
   },
-  "include": [
-    "**.ts"
-, "day-1/index.ts", "day-1/array-functions.test.ts", "day-1/array-functions.ts"   ],
-  "exclude": [
-    "node_modules",
-    "firefunctions"
-   ]
+  "include": ["**.ts"],
+  "exclude": ["node_modules", "firefunctions"]
 }
