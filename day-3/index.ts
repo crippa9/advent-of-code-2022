@@ -70,7 +70,7 @@ const solveSecondWithInput = (data: string) => {
     0
   );
 
-  console.log("3 B. Sum of badge priorisies", badgePrioritySum);
+  console.log("3 B. Sum of badge priorities", badgePrioritySum);
 };
 
 const characterPriority = (character: string): number => {
