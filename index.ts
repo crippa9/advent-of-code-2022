@@ -1,6 +1,7 @@
 import Day1 from "./day-1";
 import Day2 from "./day-2";
 import Day3 from "./day-3";
+import Day4 from "./day-4";
 
 const day1 = new Day1();
 // day1.solveFirst();
@@ -12,4 +13,8 @@ const day2 = new Day2();
 
 const day3 = new Day3();
 // day3.solveFirst();
-day3.solveSecond();
+// day3.solveSecond();
+
+const day4 = new Day4();
+// day4.solveFirst();
+// day4.solveSecond();
