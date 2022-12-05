@@ -39,6 +39,21 @@ export default class Day2 extends Puzzle {
     const rounds = mapOpponentAndWantedOutcomeRoundsFromInput(data);
     this.solveSecondWithInput(rounds);
   }
+
+  private solveFirstWithInput(rounds: [OpponentMove, MyMove][]): void {
+    const roundResults = rounds.map(([opponentMove, myMove]) => {
+      const moveScore = calculatePointsForMove(myMove);
+      const playScore = calculatePointsForRound(opponentMove, myMove);
+      const roundScore = moveScore + playScore;
+
+      return roundScore;
+    });
+    console.log(
+      "2A. Total score:",
+      roundResults.reduce((aggr, curr) => curr + aggr, 0)
+    );
+  }
+  
   private solveSecondWithInput(rounds: [OpponentMove, WantedOutcome][]) {
     const roundResults = rounds.map((round) => {
       const [opponentMove] = round;
@@ -51,21 +66,7 @@ export default class Day2 extends Puzzle {
       return roundScore;
     });
     console.log(
-      "2 B. Total score:",
-      roundResults.reduce((aggr, curr) => curr + aggr, 0)
-    );
-  }
-
-  private solveFirstWithInput(rounds: [OpponentMove, MyMove][]): void {
-    const roundResults = rounds.map(([opponentMove, myMove]) => {
-      const moveScore = calculatePointsForMove(myMove);
-      const playScore = calculatePointsForRound(opponentMove, myMove);
-      const roundScore = moveScore + playScore;
-
-      return roundScore;
-    });
-    console.log(
-      "2 A. Total score:",
+      "2B. Total score:",
       roundResults.reduce((aggr, curr) => curr + aggr, 0)
     );
   }

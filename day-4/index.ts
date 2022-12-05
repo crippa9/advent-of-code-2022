@@ -30,7 +30,7 @@ const solveFirstWithInput = (data: string) => {
   );
 
   console.log(
-    "4 A. Assignment pairs where one range fully contains the other",
+    "4A. Assignment pairs where one range fully contains the other",
     pairsWithFullContainment
   );
 };
@@ -43,7 +43,7 @@ const solveSecondWithInput = (data: string) => {
     0
   );
 
-  console.log("4 B. Assignment pairs with partial overlap", pairsWithPartialContainment);
+  console.log("4B. Assignment pairs with partial overlap", pairsWithPartialContainment);
 };
 
 const parsePairAssignments = (data: string): Assignment[][] =>

@@ -44,7 +44,7 @@ const solveFirstWithInput = (data: string) => {
     0
   );
 
-  console.log("3 A. Sum of priorities", prioritySum);
+  console.log("3A. Sum of priorities", prioritySum);
 };
 
 const solveSecondWithInput = (data: string) => {
@@ -70,7 +70,7 @@ const solveSecondWithInput = (data: string) => {
     0
   );
 
-  console.log("3 B. Sum of badge priorities", badgePrioritySum);
+  console.log("3B. Sum of badge priorities", badgePrioritySum);
 };
 
 const characterPriority = (character: string): number => {
