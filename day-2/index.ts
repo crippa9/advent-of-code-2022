@@ -19,23 +19,11 @@ export default class Day2 extends Puzzle {
   constructor() {
     super(2);
   }
-  solveFirstTest(): void {
-    const data = this.readTestInput();
+  solveFirstImplementation(data: string): void {
     const rounds = mapOpponentAndMyMoveRoundsFromInput(data);
     this.solveFirstWithInput(rounds);
   }
-  solveFirst(): void {
-    const data = this.readInput();
-    const rounds = mapOpponentAndMyMoveRoundsFromInput(data);
-    this.solveFirstWithInput(rounds);
-  }
-  solveSecondTest(): void {
-    const data = this.readTestInput();
-    const rounds = mapOpponentAndWantedOutcomeRoundsFromInput(data);
-    this.solveSecondWithInput(rounds);
-  }
-  solveSecond(): void {
-    const data = this.readInput();
+  solveSecondImplementation(data: string): void {
     const rounds = mapOpponentAndWantedOutcomeRoundsFromInput(data);
     this.solveSecondWithInput(rounds);
   }

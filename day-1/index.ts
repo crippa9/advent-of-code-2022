@@ -10,21 +10,11 @@ export default class Day1 extends Puzzle {
   constructor() {
     super(1);
   }
-  solveFirstTest(): void {
-    const inputString = this.readTestInput();
-    solveFirstWithInput(inputString);
+  solveFirstImplementation(data: string): void {
+    solveFirstWithInput(data);
   }
-  solveFirst(): void {
-    const inputString = this.readInput();
-    solveFirstWithInput(inputString);
-  }
-  solveSecondTest(): void {
-    const inputString = this.readTestInput();
-    solveSecondWithInput(inputString);
-  }
-  solveSecond(): void {
-    const inputString = this.readInput();
-    solveSecondWithInput(inputString);
+  solveSecondImplementation(data: string): void {
+    solveSecondWithInput(data);
   }
 }
 

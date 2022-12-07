@@ -4,20 +4,10 @@ export default class Day3 extends Puzzle {
   constructor() {
     super(3);
   }
-  solveFirstTest(): void {
-    const data = this.readTestInput();
+  solveFirstImplementation(data: string): void {
     solveFirstWithInput(data);
   }
-  solveFirst(): void {
-    const data = this.readInput();
-    solveFirstWithInput(data);
-  }
-  solveSecondTest(): void {
-    const data = this.readTestInput();
-    solveSecondWithInput(data);
-  }
-  solveSecond(): void {
-    const data = this.readInput();
+  solveSecondImplementation(data: string): void {
     solveSecondWithInput(data);
   }
 }
